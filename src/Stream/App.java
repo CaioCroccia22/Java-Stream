@@ -114,7 +114,7 @@ public class App {
 					JOptionPane.showMessageDialog(null, "Campo está vazio");
 				} else {
 					model.addRow(new Object[]{name, genderString});
-					personController.AddToList(name, genderString.charAt(0));
+					personController.addToList(name, genderString.charAt(0));
 					inputA.setText("");
 					inputB.setText("");
 				}
@@ -126,7 +126,7 @@ public class App {
 		model.setRowCount(0);
 		
 		
-		List<Person> list = personController.FilterListPeople();
+		List<Person> list = personController.filterListPeople();
 		
 		
 		for(Person p : list) {

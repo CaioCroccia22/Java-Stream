@@ -14,12 +14,12 @@ public class PersonController {
 		
 	}
 	
-	public void AddToList(String name, char gender) {
+	public void addToList(String name, char gender) {
 		Person person = personDao.createPerson(name, gender);
 		personDao.addObjectList(person);
 	}
 	
-	public List<Person> FilterListPeople(){
+	public List<Person> filterListPeople(){
 		List<Person> people = PersonDAO.list;
 		return people.stream().filter(e -> e.getGender() == 'F')
 				.collect(Collectors.toList());
