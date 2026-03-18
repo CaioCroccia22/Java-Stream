@@ -1,0 +1,28 @@
+package controller;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+
+import dao.PersonDAO;
+import model.Person;
+
+public class PersonController {
+	public PersonDAO personDao = new PersonDAO();
+		
+	public PersonController() {
+		
+	}
+	
+	public void AddToList(String name, char gender) {
+		Person person = personDao.createPerson(name, gender);
+		personDao.addObjectList(person);
+	}
+	
+	public List<Person> FilterListPeople(){
+		List<Person> people = PersonDAO.list;
+		return people.stream().filter(e -> e.getGender() == 'F')
+				.collect(Collectors.toList());
+	}
+	
+}
