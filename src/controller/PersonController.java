@@ -11,8 +11,8 @@ import model.Person;
 public class PersonController {
 	private final IObjectDAO<Person> personDao;
 		
-	public PersonController() {
-		this.personDao = null;
+	public PersonController(IObjectDAO<Person>  dao) {
+		this.personDao = dao;
 		
 	}
 	

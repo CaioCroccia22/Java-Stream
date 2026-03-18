@@ -11,15 +11,19 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import controller.PersonController;
+import dao.IObjectDAO;
+import dao.PersonDAO;
 import model.Person;
 
 public class App {
 
 	public static void main(String[] args) {
-		PersonController personController = new PersonController();
-		
-		generateLayout(personController);
-
+		SwingUtilities.invokeLater(() -> {
+			IObjectDAO<Person> dao			  = new PersonDAO();
+			PersonController personController = new PersonController(dao);
+			
+			generateLayout(personController);
+		 });
 	}
 	
 	public static void generateLayout(PersonController personController) {
@@ -133,11 +137,5 @@ public class App {
 		list.forEach((key,value) -> model.addRow(new Object[]{key, value}));
 	     
 	}
-
-	private static void forEach() {
-		// TODO Auto-generated method stub
-		
-	}
-
 }
 	

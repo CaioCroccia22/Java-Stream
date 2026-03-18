@@ -17,9 +17,9 @@ public class PersonDAO implements IObjectDAO<Person> {
 	}
 
 	public Person createObject(Person p) throws Exception {
-		Class pc 		= Person.class;
-		Constructor con = pc.getConstructor();
-		Person person = (Person) con.newInstance(p);
+		Class<Person> pc 		= Person.class;
+		Constructor<Person> con = pc.getConstructor(String.class, char.class);
+		Person person = (Person) con.newInstance(p.getName(), p.getGender());
 		
 		return person;
 		
@@ -30,10 +30,6 @@ public class PersonDAO implements IObjectDAO<Person> {
 		return Collections.unmodifiableList(list);
 	}
 
-	@Override
-	public String toString() {
-		return "PersonDAO [getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
-				+ "]";
-	}
+
 		
 }
