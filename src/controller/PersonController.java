@@ -1,6 +1,8 @@
 package controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import dao.IObjectDAO;
@@ -25,10 +27,19 @@ public class PersonController {
 		
 	}
 	
-	public List<Person> filterListPeople(){
+	public HashMap<String, Character> filterListPeople(){
+		HashMap<String, Character> filterMap = new HashMap<String, Character>();
+		
 		List<Person> people = personDao.getAll();
-		return people.stream().filter(e -> e.getGender() == 'F')
+		List<Person> filterPeople = people.stream().filter(e -> e.getGender() == 'F')
 				.collect(Collectors.toList());
+		
+		for(Person p : filterPeople) {
+			filterMap.put(p.getName(), p.getGender());
+		}
+		
+		return filterMap;
+	     
 	}
 	
 }

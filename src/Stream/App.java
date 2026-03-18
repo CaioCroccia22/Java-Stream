@@ -1,5 +1,6 @@
 package Stream;
 
+import java.util.HashMap;
 import java.util.List;
 
 import java.awt.*;
@@ -126,13 +127,16 @@ public class App {
 		model.setRowCount(0);
 		
 		
-		List<Person> list = personController.filterListPeople();
+		HashMap<String, Character> list = personController.filterListPeople();
 		
-		
-		for(Person p : list) {
-			model.addRow(new Object[]{p.getName(), p.getGender()});
-		}
+	
+		list.forEach((key,value) -> model.addRow(new Object[]{key, value}));
 	     
+	}
+
+	private static void forEach() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
