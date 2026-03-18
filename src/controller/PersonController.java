@@ -20,7 +20,7 @@ public class PersonController {
 	}
 	
 	public List<Person> filterListPeople(){
-		List<Person> people = PersonDAO.list;
+		List<Person> people = PersonDAO.getList();
 		return people.stream().filter(e -> e.getGender() == 'F')
 				.collect(Collectors.toList());
 	}

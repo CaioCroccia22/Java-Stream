@@ -1,23 +1,33 @@
 package dao;
 
+import java.lang.reflect.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import model.Person;
 
 public class PersonDAO implements IObjectDAO<Person> {
 	
-	public static List<Person> list = new ArrayList<Person>();
+	private final List<Person> list = new ArrayList<Person>();
 
 	@Override
 	public void addObjectList(Person person) {
 		list.add(person);
 	}
 
-	public Person createPerson(String name, char gender) {
-		Person person 	=	new Person(name, gender);
+	public Person createObject(Person p) throws Exception {
+		Class pc 		= Person.class;
+		Constructor con = pc.getConstructor();
+		Person person = (Person) con.newInstance(p);
+		
 		return person;
 		
+	}
+	
+	@Override
+	public List<Person> getAll(){
+		return Collections.unmodifiableList(list);
 	}
 
 	@Override
